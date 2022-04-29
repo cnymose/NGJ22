@@ -16,6 +16,9 @@ public class FirstPersonController : MonoBehaviour
 
     [SerializeField] float interactLength = 100f;
 
+    bool holdingItem = false;
+    GameObject heldItem;
+
     void Start()
     {
         Cursor.visible = false;
@@ -60,9 +63,22 @@ public class FirstPersonController : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * interactLength, Color.red);
 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, interactLength))
+        if (Physics.Raycast(ray, out hit, interactLength) && hit.transform.gameObject.tag == "Interactable")
         {
-            
+            if (Input.GetMouseButtonDown(0) && holdingItem == false)
+            {
+                heldItem = hit.transform.gameObject;
+                heldItem.GetComponent<Rigidbody>().useGravity = false;
+                heldItem.transform.parent = camera.transform;
+                holdingItem = true;
+            }
+        }
+        if (Input.GetMouseButtonUp(0) && holdingItem == true)
+        {
+            heldItem.GetComponent<Rigidbody>().useGravity = true;
+            heldItem.transform.parent = null;
+            holdingItem = false;
+            heldItem = null;
         }
     }
 }

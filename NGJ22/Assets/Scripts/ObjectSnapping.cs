@@ -10,6 +10,8 @@ public class ObjectSnapping : MonoBehaviour
 
     [SerializeField] GameObject[] snappedVisuals;
 
+    [SerializeField] GameObject associatedCharacter;
+    [SerializeField] int taskNumber;
 
     void Start()
     {
@@ -21,18 +23,21 @@ public class ObjectSnapping : MonoBehaviour
         
     }
 
-    public void CheckSnapToPoint()
+    public bool CheckSnapToPoint()
     {
         if (Vector3.Distance(gameObject.transform.position, snapPoint.transform.position) < snapDistance)
         {
             SnapToPoint();
+            return true;
         }
+        return false;
     }
 
     void SnapToPoint()
     {
         for(int i = 0; i < snappedVisuals.Length; i++)
         {
+            associatedCharacter.GetComponent<TaskPaperInteraction>().CrossOutTask(taskNumber);
             snappedVisuals[i].SetActive(true);
         }
         Destroy(gameObject);

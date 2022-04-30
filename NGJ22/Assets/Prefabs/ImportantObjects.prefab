@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 8821719741019914086}
   - component: {fileID: 8464031980950748167}
   - component: {fileID: 1092051303610779256}
+  - component: {fileID: 8565188363126591385}
   m_Layer: 0
   m_Name: Gloves
   m_TagString: Interactable
@@ -371,6 +372,19 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 4202537965200615521}
   taskNumber: 1
+--- !u!114 &8565188363126591385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134476064796937045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76aaf79c3da66436188e290e7800c7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
 --- !u!1 &1151750884095685593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,6 +1083,7 @@ GameObject:
   - component: {fileID: 471099914901029421}
   - component: {fileID: 7199900429790507772}
   - component: {fileID: 354987541550965779}
+  - component: {fileID: 1445057353783275934}
   m_Layer: 0
   m_Name: Mop
   m_TagString: Interactable
@@ -1189,6 +1204,19 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 3073017352254961749}
   taskNumber: 2
+--- !u!114 &1445057353783275934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2200504919789882043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76aaf79c3da66436188e290e7800c7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
 --- !u!1 &2556427739535150493
 GameObject:
   m_ObjectHideFlags: 0
@@ -3350,6 +3378,7 @@ GameObject:
   - component: {fileID: 4329550776349775938}
   - component: {fileID: 4793816117106881864}
   - component: {fileID: 832558090986980439}
+  - component: {fileID: 7060337175196370491}
   m_Layer: 0
   m_Name: Lamp
   m_TagString: Interactable
@@ -3470,6 +3499,19 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 4089315360932409307}
   taskNumber: 3
+--- !u!114 &7060337175196370491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3182631349283115778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76aaf79c3da66436188e290e7800c7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
 --- !u!1 &3252931829334229599
 GameObject:
   m_ObjectHideFlags: 0
@@ -3567,6 +3609,7 @@ GameObject:
   - component: {fileID: 8510821596656082979}
   - component: {fileID: 1559483571994380048}
   - component: {fileID: 5179116743148970588}
+  - component: {fileID: 6588001953931528549}
   m_Layer: 0
   m_Name: Beer
   m_TagString: Interactable
@@ -3687,6 +3730,19 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 4089315360932409307}
   taskNumber: 0
+--- !u!114 &6588001953931528549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457861463042808984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76aaf79c3da66436188e290e7800c7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
 --- !u!1 &3557968660201854638
 GameObject:
   m_ObjectHideFlags: 0
@@ -4707,6 +4763,7 @@ GameObject:
   - component: {fileID: 1230764917125735334}
   - component: {fileID: 8606874358865156146}
   - component: {fileID: 7477085464706705680}
+  - component: {fileID: 2206168185164576335}
   m_Layer: 0
   m_Name: Drapes
   m_TagString: Interactable
@@ -4827,6 +4884,19 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 3073017352254961749}
   taskNumber: 1
+--- !u!114 &2206168185164576335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4805072144513474899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76aaf79c3da66436188e290e7800c7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
 --- !u!1 &4937314200298540280
 GameObject:
   m_ObjectHideFlags: 0
@@ -5256,6 +5326,7 @@ GameObject:
   - component: {fileID: 7684416070636531016}
   - component: {fileID: 1828336732550391014}
   - component: {fileID: 1090269566366853989}
+  - component: {fileID: 4372912742093410588}
   m_Layer: 0
   m_Name: Leather
   m_TagString: Interactable
@@ -5376,6 +5447,19 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 4089315360932409307}
   taskNumber: 4
+--- !u!114 &4372912742093410588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5667526559417826569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76aaf79c3da66436188e290e7800c7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
 --- !u!1 &6172583086951089243
 GameObject:
   m_ObjectHideFlags: 0
@@ -5696,6 +5780,7 @@ GameObject:
   - component: {fileID: 5261496336758201561}
   - component: {fileID: 4774006680803112817}
   - component: {fileID: 2399579877567336139}
+  - component: {fileID: 2151141344876663075}
   m_Layer: 0
   m_Name: Plunger
   m_TagString: Interactable
@@ -5817,6 +5902,19 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 4202537965200615521}
   taskNumber: 2
+--- !u!114 &2151141344876663075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6551216724361011738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76aaf79c3da66436188e290e7800c7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
 --- !u!1 &6567850348347572392
 GameObject:
   m_ObjectHideFlags: 0
@@ -6232,6 +6330,7 @@ GameObject:
   - component: {fileID: 2272749569235075143}
   - component: {fileID: 5212758615277495801}
   - component: {fileID: 6292642219107264919}
+  - component: {fileID: 6438924050924622593}
   m_Layer: 0
   m_Name: Balloon
   m_TagString: Interactable
@@ -6354,6 +6453,19 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 4202537965200615521}
   taskNumber: 0
+--- !u!114 &6438924050924622593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474380962417912672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76aaf79c3da66436188e290e7800c7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
 --- !u!1 &7659551251160855891
 GameObject:
   m_ObjectHideFlags: 0
@@ -6451,6 +6563,7 @@ GameObject:
   - component: {fileID: 5743207201389355094}
   - component: {fileID: 1431689626668301960}
   - component: {fileID: 1876682285460325919}
+  - component: {fileID: 656397755113134643}
   m_Layer: 0
   m_Name: Boots
   m_TagString: Interactable
@@ -6571,6 +6684,19 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 4089315360932409307}
   taskNumber: 1
+--- !u!114 &656397755113134643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750294586096462202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76aaf79c3da66436188e290e7800c7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
 --- !u!1 &8197266426611373084
 GameObject:
   m_ObjectHideFlags: 0
@@ -6723,6 +6849,7 @@ GameObject:
   - component: {fileID: 8623139278090551397}
   - component: {fileID: 5778098477596782572}
   - component: {fileID: 664879865684165789}
+  - component: {fileID: 4408801387171270308}
   m_Layer: 0
   m_Name: Vaccuum
   m_TagString: Interactable
@@ -6843,6 +6970,19 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 3073017352254961749}
   taskNumber: 3
+--- !u!114 &4408801387171270308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8322189309322827796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76aaf79c3da66436188e290e7800c7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
 --- !u!1 &8348872750925658880
 GameObject:
   m_ObjectHideFlags: 0

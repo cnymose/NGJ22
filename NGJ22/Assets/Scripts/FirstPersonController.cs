@@ -90,6 +90,10 @@ public class FirstPersonController : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            EndHighlight();
+        }
         if (Input.GetMouseButtonUp(0) && holdingItem)
         {
             if (Physics.Raycast(ray, out hit, interactLength+10) && hit.transform.gameObject.tag != "Interactable" && Vector3.Distance(camera.transform.position, heldItem.transform.position) > Vector3.Distance(camera.transform.position, hit.point))
@@ -97,7 +101,6 @@ public class FirstPersonController : MonoBehaviour
                 heldItem.transform.position = hit.point + new Vector3(0,.1f,0);
             }
             
-            EndHighlight();
             heldItem.GetComponent<Rigidbody>().useGravity = true;
             heldItem.GetComponent<SphereCollider>().enabled = true;
             heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -116,6 +119,10 @@ public class FirstPersonController : MonoBehaviour
 
     private void DoHighlight(Transform transform)
     {
+        if (!(transform.tag == "Interactable" || transform.tag == "TaskPaper"))
+        {
+            EndHighlight();
+        }
         var highlight = transform.GetComponent<Highlight>();
         if (highlight != null)
         {

@@ -7,7 +7,7 @@ public class Highlight : MonoBehaviour
     private static int outlinePropertyId = Shader.PropertyToID("_OutlineWidth");
     private static int outlineColorPropertyId = Shader.PropertyToID("_OutlineColor");
     
-    [ColorUsage(false, true), SerializeField] private Color outlineColor;
+    [ColorUsage(false, true), SerializeField] private Color outlineColor = new Color(2.75f,2.75f, 1.35f, 1);
 
     private Renderer[] targetRenderers;
 
@@ -20,7 +20,7 @@ public class Highlight : MonoBehaviour
     {
         foreach (var targetRenderer in targetRenderers)
         {
-            targetRenderer.material.SetFloat(outlinePropertyId, 2);
+            targetRenderer.material.SetFloat(outlinePropertyId, 4);
             targetRenderer.material.SetColor(outlineColorPropertyId, outlineColor);
         }
     }

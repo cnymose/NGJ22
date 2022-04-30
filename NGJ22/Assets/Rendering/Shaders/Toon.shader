@@ -170,7 +170,7 @@ Shader "NGJ22/Toon Surface"
                 float2 uv : TEXCOORD0;
                 float4 pos : SV_POSITION;
 				float4 color : COLOR;
-#if MAIN_LIGHT_SHADOWS && defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
+#if defined(_MAIN_LIGHT_SHADOWS) && defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 				float4 shadowCoord : TEXCOORD1;
 #endif
 				float3 worldNormal : NORMAL;
@@ -289,8 +289,8 @@ Shader "NGJ22/Toon Surface"
 				o.worldNormal = normalInput.normalWS;
                 o.pos = vertexInput.positionCS;
 				o.worldPos = vertexInput.positionWS;
-#ifdef MAIN_LIGHT_SHADOWS
-	#if REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR
+#if defined(_MAIN_LIGHT_SHADOWS)
+	#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 				o.shadowCoord = GetShadowCoord(vertexInput);
 	#endif
 #endif
@@ -319,7 +319,7 @@ Shader "NGJ22/Toon Surface"
 				half3 triplanarWeights = TriplanarWeights(worldNormal);
 #endif
 
-#if MAIN_LIGHT_SHADOWS && defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
+#if defined(_MAIN_LIGHT_SHADOWS) && defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 				Light mainLight = GetMainLight(i.shadowCoord);
 #else
 				Light mainLight = GetMainLight();
@@ -332,7 +332,7 @@ Shader "NGJ22/Toon Surface"
 				float NDotLRaw = dot(worldNormal, lightDir);
 				float NDotL = max(0, NDotLRaw);
 				float shadowAtten = 1;
-#if MAIN_LIGHT_SHADOWS
+#if defined(_MAIN_LIGHT_SHADOWS)
 		#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 					shadowAtten = mainLight.shadowAttenuation;
 		#elif defined(MAIN_LIGHT_CALCULATE_SHADOWS)

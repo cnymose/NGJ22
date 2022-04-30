@@ -11,6 +11,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] GameObject camera;
     [SerializeField] float lookDownConstraint;
     [SerializeField] float lookUpConstraint;
+    bool taskListHeld = false;
 
     float headTilt = 0f;
 
@@ -18,6 +19,7 @@ public class FirstPersonController : MonoBehaviour
 
     bool holdingItem = false;
     GameObject heldItem;
+    [SerializeField] GameObject taskPaper;
 
     void Start()
     {
@@ -63,16 +65,27 @@ public class FirstPersonController : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * interactLength, Color.red);
 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, interactLength) && hit.transform.gameObject.tag == "Interactable" && hit.transform.gameObject.GetComponent<ObjectSnapping>().snapped == false)
+        if (Input.GetMouseButtonDown(0) && holdingItem == false && taskPaper.GetComponent<TaskPaperInteraction>().taskListHeld == true)
+        {
+            taskPaper.GetComponent<TaskPaperInteraction>().PutDownTaskList();
+        }
+        else if (Physics.Raycast(ray, out hit, interactLength))
         {
             if (Input.GetMouseButtonDown(0) && holdingItem == false)
             {
-                heldItem = hit.transform.gameObject;
-                heldItem.GetComponent<Rigidbody>().useGravity = false;
-                heldItem.GetComponent<SphereCollider>().enabled = false;
-                heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                heldItem.transform.parent = camera.transform;
-                holdingItem = true;
+                if (hit.transform.gameObject.tag == "Interactable" && hit.transform.gameObject.GetComponent<ObjectSnapping>().snapped == false)
+                {
+                    heldItem = hit.transform.gameObject;
+                    heldItem.GetComponent<Rigidbody>().useGravity = false;
+                    heldItem.GetComponent<SphereCollider>().enabled = false;
+                    heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                    heldItem.transform.parent = camera.transform;
+                    holdingItem = true;
+                }
+                else if (hit.transform.gameObject.tag == "TaskPaper" && taskPaper.GetComponent<TaskPaperInteraction>().taskListHeld == false)
+                {
+                    taskPaper.GetComponent<TaskPaperInteraction>().PickUpTaskList();
+                }
             }
         }
         if (Input.GetMouseButtonUp(0) && holdingItem == true)

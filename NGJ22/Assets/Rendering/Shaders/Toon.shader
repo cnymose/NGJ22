@@ -170,7 +170,7 @@ Shader "NGJ22/Toon Surface"
                 float2 uv : TEXCOORD0;
                 float4 pos : SV_POSITION;
 				float4 color : COLOR;
-#if MAIN_LIGHT_SHADOWS && defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
+#if defined(_MAIN_LIGHT_SHADOWS) && defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 				float4 shadowCoord : TEXCOORD1;
 #endif
 				float3 worldNormal : NORMAL;
@@ -289,13 +289,13 @@ Shader "NGJ22/Toon Surface"
 				o.worldNormal = normalInput.normalWS;
                 o.pos = vertexInput.positionCS;
 				o.worldPos = vertexInput.positionWS;
-#ifdef MAIN_LIGHT_SHADOWS
-	#if REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR
+#if defined(_MAIN_LIGHT_SHADOWS)
+	#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 				o.shadowCoord = GetShadowCoord(vertexInput);
 	#endif
 #endif
 
-#if RIM
+#if RIM ||SPECULAR
 				o.viewDir = _WorldSpaceCameraPos - vertexInput.positionWS.xyz; 
 #endif
 #if HALFTONE_RIM && !HALFTONE_TRIPLANAR
@@ -319,7 +319,7 @@ Shader "NGJ22/Toon Surface"
 				half3 triplanarWeights = TriplanarWeights(worldNormal);
 #endif
 
-#if MAIN_LIGHT_SHADOWS && defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
+#if defined(_MAIN_LIGHT_SHADOWS) && defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 				Light mainLight = GetMainLight(i.shadowCoord);
 #else
 				Light mainLight = GetMainLight();
@@ -332,7 +332,7 @@ Shader "NGJ22/Toon Surface"
 				float NDotLRaw = dot(worldNormal, lightDir);
 				float NDotL = max(0, NDotLRaw);
 				float shadowAtten = 1;
-#if MAIN_LIGHT_SHADOWS
+#if defined(_MAIN_LIGHT_SHADOWS)
 		#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 					shadowAtten = mainLight.shadowAttenuation;
 		#elif defined(MAIN_LIGHT_CALCULATE_SHADOWS)
@@ -341,12 +341,14 @@ Shader "NGJ22/Toon Surface"
 #endif
 
 				NDotL *= shadowAtten;
+				float diff = GetDiffuse(NDotL);				
 
 #if SPECULAR
 				float3 halfVector = normalize(i.viewDir.xyz + mainLight.direction.xyz);
 				float NDotH = saturate(dot(worldNormal,halfVector));
 				float spec = SafePositivePow(NDotH, _SpecularPower);
-				lightVal += spec * _SpecularScale;
+            	spec = smoothstep(_SpecularMin, _SpecularMax, spec);
+				lightVal += spec * _SpecularScale * diff;
 #endif
 
 #if RIM
@@ -360,7 +362,6 @@ Shader "NGJ22/Toon Surface"
 				lightVal += rim;
 #endif
 
-				float diff = GetDiffuse(NDotL);				
 
 #if HALFTONE_RIM
 				float halftoneSampleRim = 0;
@@ -405,13 +406,14 @@ Shader "NGJ22/Toon Surface"
 
 					float atten = light.distanceAttenuation * light.shadowAttenuation;
 					float addNDotL = max(0, dot(worldNormal, light.direction)) * atten;
+                	float add = smoothstep(_DiffuseMin, _DiffuseMax, addNDotL);
 
 #if HALFTONE
 					float addHalftone = lerp(halftoneSample, 1 ,(smoothstep(_HalftoneAdditiveLower, _HalftoneAdditiveUpper, addNDotL)));
 					addNDotL *= addHalftone;
 #endif
 					
-                    col.rgb += addNDotL * baseCol.rgb  * light.color;
+                    col.rgb += add * baseCol.rgb  * light.color;
 					
 #if SPECULAR
 					halfVector = normalize(i.viewDir.xyz + light.direction.xyz);

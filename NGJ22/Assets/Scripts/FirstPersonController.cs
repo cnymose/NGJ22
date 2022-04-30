@@ -19,7 +19,7 @@ public class FirstPersonController : MonoBehaviour
 
     bool holdingItem = false;
     GameObject heldItem;
-    [SerializeField] GameObject taskPaper;
+    GameObject taskPaper;
 
     void Start()
     {
@@ -65,9 +65,9 @@ public class FirstPersonController : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * interactLength, Color.red);
 
         RaycastHit hit;
-        if (Input.GetMouseButtonDown(0) && holdingItem == false && taskPaper.GetComponent<TaskPaperInteraction>().taskListHeld == true)
+        if (taskPaper != null && Input.GetMouseButtonDown(0) && holdingItem == false && taskPaper.transform.parent.GetComponent<TaskPaperInteraction>().taskListHeld == true)
         {
-            taskPaper.GetComponent<TaskPaperInteraction>().PutDownTaskList();
+            taskPaper.transform.parent.GetComponent<TaskPaperInteraction>().PutDownTaskList();
         }
         else if (Physics.Raycast(ray, out hit, interactLength))
         {
@@ -82,9 +82,10 @@ public class FirstPersonController : MonoBehaviour
                     heldItem.transform.parent = camera.transform;
                     holdingItem = true;
                 }
-                else if (hit.transform.gameObject.tag == "TaskPaper" && taskPaper.GetComponent<TaskPaperInteraction>().taskListHeld == false)
+                else if (hit.transform.gameObject.tag == "TaskPaper")
                 {
-                    taskPaper.GetComponent<TaskPaperInteraction>().PickUpTaskList();
+                    taskPaper = hit.transform.gameObject;
+                    taskPaper.transform.parent.GetComponent<TaskPaperInteraction>().PickUpTaskList();
                 }
             }
         }
@@ -99,7 +100,11 @@ public class FirstPersonController : MonoBehaviour
             heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             heldItem.transform.parent = null;
             holdingItem = false;
-            heldItem.GetComponent<ObjectSnapping>().CheckSnapToPoint();
+            bool objectSnap = heldItem.GetComponent<ObjectSnapping>().CheckSnapToPoint();
+            if(objectSnap == true)
+            {
+
+            }
             heldItem = null;
         }
     }

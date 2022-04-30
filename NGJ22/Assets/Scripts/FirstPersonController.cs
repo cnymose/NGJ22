@@ -73,7 +73,7 @@ public class FirstPersonController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && holdingItem == false)
             {
-                if (hit.transform.gameObject.tag == "Interactable" && hit.transform.gameObject.GetComponent<ObjectSnapping>().snapped == false)
+                if (hit.transform.gameObject.tag == "Interactable")
                 {
                     heldItem = hit.transform.gameObject;
                     heldItem.GetComponent<Rigidbody>().useGravity = false;

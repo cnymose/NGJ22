@@ -376,10 +376,9 @@ Shader "NGJ22/Toon Surface"
 				baseCol.rgb = lerp(baseCol.rgb, _HalftoneRimColor.rgb, rimHalftoneA);
 #endif
 				float3 ambient = SampleSH(worldNormal);
-				float4 col = float4(baseCol.rgb * (0.4 + diff * 0.6) * (ambient + mainLight.color.rgb), baseCol.a);
-
-
-				col.rgb += lightVal * (ambient + mainLight.color.rgb) * shadowAtten;
+            	float4 col = float4(ambient * baseCol, 1);
+            	float4 colRef = col;
+				//col.rgb = col.rgb * lightVal * (ambient + mainLight.color.rgb) * shadowAtten;
 
 #if HALFTONE
 				float halftoneSample;
@@ -405,21 +404,27 @@ Shader "NGJ22/Toon Surface"
                     Light light = GetAdditionalLight(l, i.worldPos);
 
 					float atten = light.distanceAttenuation * light.shadowAttenuation;
-					float addNDotL = max(0, dot(worldNormal, light.direction)) * atten;
-                	float add = smoothstep(_DiffuseMin, _DiffuseMax, addNDotL);
-
+#if defined(_ADDITIONAL_LIGHT_SHADOWS)
+                	float addShadow = AdditionalLightRealtimeShadow(l, i.worldPos, normalize(light.direction));
+#else
+                	float addShadow = 1; 
+#endif
+					float addNDotL = max(0, dot(worldNormal, light.direction)) * atten * addShadow;
+					float add = smoothstep(_DiffuseMin, _DiffuseMax, addNDotL);
+                	
+                	
 #if HALFTONE
 					float addHalftone = lerp(halftoneSample, 1 ,(smoothstep(_HalftoneAdditiveLower, _HalftoneAdditiveUpper, addNDotL)));
 					addNDotL *= addHalftone;
 #endif
 					
-                    col.rgb += add * baseCol.rgb  * light.color;
+                    col.rgb += add * light.color * colRef.rgb;
 					
 #if SPECULAR
 					halfVector = normalize(i.viewDir.xyz + light.direction.xyz);
 					NDotH = saturate(dot(worldNormal,halfVector));
-					float addSpec = SafePositivePow(NDotH, _SpecularPower) * atten;
-					col.rgb += addSpec * light.color;
+					float addSpec = SafePositivePow(NDotH, _SpecularPower) ;
+					col.rgb += smoothstep(_SpecularMin, _SpecularMax, addSpec) * light.color * _SpecularScale * addShadow;
 
 #endif
 #if RIM

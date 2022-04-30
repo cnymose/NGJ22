@@ -157,10 +157,10 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _Specular: 1
     - _SpecularHighlights: 1
-    - _SpecularMax: 0.245
-    - _SpecularMin: 0.237
-    - _SpecularPower: 114
-    - _SpecularScale: 0.44
+    - _SpecularMax: 0.171
+    - _SpecularMin: 0.118
+    - _SpecularPower: 52.1
+    - _SpecularScale: 0.2
     - _SrcBlend: 1
     - _Surface: 0
     - _VertexColor: 0

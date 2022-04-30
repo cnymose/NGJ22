@@ -63,21 +63,30 @@ public class FirstPersonController : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * interactLength, Color.red);
 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, interactLength) && hit.transform.gameObject.tag == "Interactable")
+        if (Physics.Raycast(ray, out hit, interactLength) && hit.transform.gameObject.tag == "Interactable" && hit.transform.gameObject.GetComponent<ObjectSnapping>().snapped == false)
         {
             if (Input.GetMouseButtonDown(0) && holdingItem == false)
             {
                 heldItem = hit.transform.gameObject;
                 heldItem.GetComponent<Rigidbody>().useGravity = false;
+                heldItem.GetComponent<SphereCollider>().enabled = false;
+                heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 heldItem.transform.parent = camera.transform;
                 holdingItem = true;
             }
         }
         if (Input.GetMouseButtonUp(0) && holdingItem == true)
         {
+            if (Physics.Raycast(ray, out hit, interactLength+10) && hit.transform.gameObject.tag != "Interactable" && Vector3.Distance(camera.transform.position, heldItem.transform.position) > Vector3.Distance(camera.transform.position, hit.point))
+            {
+                heldItem.transform.position = hit.point + new Vector3(0,.1f,0);
+            }
             heldItem.GetComponent<Rigidbody>().useGravity = true;
+            heldItem.GetComponent<SphereCollider>().enabled = true;
+            heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             heldItem.transform.parent = null;
             holdingItem = false;
+            heldItem.GetComponent<ObjectSnapping>().CheckSnapToPoint();
             heldItem = null;
         }
     }

@@ -295,7 +295,7 @@ Shader "NGJ22/Toon Surface"
 	#endif
 #endif
 
-#if RIM
+#if RIM ||SPECULAR
 				o.viewDir = _WorldSpaceCameraPos - vertexInput.positionWS.xyz; 
 #endif
 #if HALFTONE_RIM && !HALFTONE_TRIPLANAR
@@ -346,6 +346,7 @@ Shader "NGJ22/Toon Surface"
 				float3 halfVector = normalize(i.viewDir.xyz + mainLight.direction.xyz);
 				float NDotH = saturate(dot(worldNormal,halfVector));
 				float spec = SafePositivePow(NDotH, _SpecularPower);
+            	spec = smoothstep(_SpecularMin, _SpecularMax, spec);
 				lightVal += spec * _SpecularScale;
 #endif
 
@@ -405,13 +406,14 @@ Shader "NGJ22/Toon Surface"
 
 					float atten = light.distanceAttenuation * light.shadowAttenuation;
 					float addNDotL = max(0, dot(worldNormal, light.direction)) * atten;
+                	float add = smoothstep(_DiffuseMin, _DiffuseMax, addNDotL);
 
 #if HALFTONE
 					float addHalftone = lerp(halftoneSample, 1 ,(smoothstep(_HalftoneAdditiveLower, _HalftoneAdditiveUpper, addNDotL)));
 					addNDotL *= addHalftone;
 #endif
 					
-                    col.rgb += addNDotL * baseCol.rgb  * light.color;
+                    col.rgb += add * baseCol.rgb  * light.color;
 					
 #if SPECULAR
 					halfVector = normalize(i.viewDir.xyz + light.direction.xyz);

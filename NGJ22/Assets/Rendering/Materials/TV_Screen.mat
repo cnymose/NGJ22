@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TV
+  m_Name: TV_Screen
   m_Shader: {fileID: 4800000, guid: 7a07d03f283f34a81b67b3bd9bfde74d, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []

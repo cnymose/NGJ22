@@ -35,7 +35,6 @@ public class ObjectSnapping : MonoBehaviour
 
     void SnapToPoint()
     {
-        Debug.Log(associatedCharacter);
         for(int i = 0; i < snappedVisuals.Length; i++)
         {
             snappedVisuals[i].SetActive(true);

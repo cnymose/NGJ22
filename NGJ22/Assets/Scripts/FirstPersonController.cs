@@ -78,7 +78,11 @@ public class FirstPersonController : MonoBehaviour
                 {
                     heldItem = hit.transform.gameObject;
                     heldItem.GetComponent<Rigidbody>().useGravity = false;
-                    heldItem.GetComponent<SphereCollider>().enabled = false;
+                    foreach (Collider c in heldItem.GetComponents<Collider>())
+                    {
+                        c.enabled = false;
+                    }
+                    //heldItem.GetComponent<SphereCollider>().enabled = false;
                     heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                     heldItem.transform.parent = camera.transform;
                     holdingItem = true;
@@ -102,7 +106,11 @@ public class FirstPersonController : MonoBehaviour
             }
             
             heldItem.GetComponent<Rigidbody>().useGravity = true;
-            heldItem.GetComponent<SphereCollider>().enabled = true;
+            foreach (Collider c in heldItem.GetComponents<Collider>())
+            {
+                c.enabled = true;
+            }
+            //heldItem.GetComponent<SphereCollider>().enabled = true;
             heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             heldItem.transform.parent = null;
             holdingItem = false;
@@ -114,7 +122,6 @@ public class FirstPersonController : MonoBehaviour
             heldItem = null;
         }
     }
-
 
 
     private void DoHighlight(Transform transform)

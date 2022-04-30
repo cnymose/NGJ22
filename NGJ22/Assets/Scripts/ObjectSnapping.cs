@@ -12,6 +12,8 @@ public class ObjectSnapping : MonoBehaviour
 
     [SerializeField] GameObject associatedCharacter;
     [SerializeField] int taskNumber;
+    [SerializeField] int characterID;
+
 
     void Start()
     {
@@ -23,14 +25,14 @@ public class ObjectSnapping : MonoBehaviour
         
     }
 
-    public bool CheckSnapToPoint()
+    public int CheckSnapToPoint()
     {
         if (Vector3.Distance(gameObject.transform.position, snapPoint.transform.position) < snapDistance)
         {
             SnapToPoint();
-            return true;
+            return characterID;
         }
-        return false;
+        return 0;
     }
 
     void SnapToPoint()

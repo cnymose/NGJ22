@@ -8,19 +8,7 @@ Shader "NGJ22/Toon Surface"
 		_OutlineWidth("Outline Width", Float) = 2
 		[HDR]_OutlineColor("Outline Color", Color) = (0,0,0,1)
 		_MainTex("Texture", 2D) = "white" {}
-
-		[Space]
-		[Header(Halftone)]
-		[Toggle(HALFTONE)] _Halftone("Halftone", Float) = 0
-		[Toggle(HALFTONE_TRIPLANAR)] _HalftoneTriplanr("Halftone Triplanar", Float) = 0
-		_HalftoneMin("Halftone Min", Range(0,1)) = 0
-		_HalftoneMax("Halftone Max", Range(0,1)) = 1
-		_HalftoneDiffuseLower("Halftone Diffuse Lower", Range(-1,1)) = 0
-		_HalftoneDiffuseUpper("Halftone Diffuse Upper", Range(-1,1)) = 1
-		_HalftoneAdditiveLower("Halftone Additive Lower", Range(0,1)) = 0
-		_HalftoneAdditiveUpper("Halftone Additive Upper", Range(0,1)) = 1
-		_HalftoneScale("Halftone Scale", Float) = 1
-		_HalftoneTexture("Halftone Texture", 2D) = "white"{}
+		[Toggle(AMBIENT)]_Ambient("Ambient", Float) = 1
 
 		[Space]
 		[Header(Emission)]
@@ -43,14 +31,6 @@ Shader "NGJ22/Toon Surface"
 		_RimMax("Rim Max", Range(0,1)) = 1
 		_RimPower("Rim Power", Range(0,16)) = 2
 		_RimScale("Rim Scale", Float) = 1
-
-		[Toggle(HALFTONE_RIM)] _HalftoneRim("Halftone Rim", Float) = 0
-		_HalftoneScaleRim("Halftone Scale Rim", Float) = 64
-		_HalftonePatternRim("Halftone Pattern Rim", 2D) = "white"{}
-		_HalftoneRimMin("Halftone Rim Min", Range(0, 1)) = 0
-		_HalftoneRimMax("Halftone Rim Max", Range(0, 1)) = 1
-		_HalftoneRimPower("Halftone Rim Power", Range(0, 16)) = 1
-		_HalftoneRimColor("Halftone Rim Color", Color) = (1,1,1,1)
 		
 		[Space]
 		[Header(Specular Lighting)]
@@ -138,20 +118,15 @@ Shader "NGJ22/Toon Surface"
 			#pragma multi_compile _ _ADDITIONAL_LIGHT_SHADOWS
 			#pragma multi_compile _ _SHADOWS_SOFT
 			#pragma multi_compile _ _MIXED_LIGHTING_SUBTRACTIVE
-
-			#pragma shader_feature_local HALFTONE_SAMPLE_ALPHA
+            
 			#pragma shader_feature_local VERTEX_COLOR
 			#pragma shader_feature_local DIFFUSE
 			#pragma shader_feature_local EMISSION
 			#pragma shader_feature_local RIM
-			#pragma shader_feature_local HALFTONE_RIM
-			#pragma shader_feature_local HALFTONE
-			#pragma shader_feature_local HALFTONE_TRIPLANAR
 			#pragma shader_feature_local LIGHT_AFFECTS_RIM
 			#pragma shader_feature_local SPECULAR
-
-			#include "../Shaders/Hatching.hlsl"
-			#include "../Shaders/Halftone.hlsl" 
+			#pragma shader_feature_local AMBIENT
+            
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Shadows.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
@@ -178,12 +153,6 @@ Shader "NGJ22/Toon Surface"
 				float3 viewDir : TEXCOORD2;
 #endif
 				float3 worldPos : TEXCOORD3;
-#if HALFTONE_RIM && !HALFTONE_TRIPLANAR
-				float4 halftoneRimScreenPos : TEXCOORD4;
-#endif
-#if HALFTONE && !HALFTONE_TRIPLANAR
-				float4 halftoneScreenPos : TEXCOORD5;
-#endif
 				float4 screenPos : TEXCOORD6;
             };
 
@@ -212,61 +181,9 @@ Shader "NGJ22/Toon Surface"
 	#if !RIM_USES_LIGHTCOLOR
 			float4 _RimColor;
 	#endif
-	#if HALFTONE_RIM
-			TEXTURE2D(_HalftonePatternRim);
-			SAMPLER(sampler_HalftonePatternRim);
-			float _HalftoneScaleRim;
-			float4 _HalftoneRimColor;
-			float _HalftoneRimMin;
-			float _HalftoneRimMax;
-			float _HalftoneRimPower;
-	#endif
-#endif
-#if HALFTONE
-			TEXTURE2D(_HalftoneTexture);
-			SAMPLER(sampler_HalftoneTexture);
-			float _HalftoneScale;
-			float _HalftoneMin;
-			float _HalftoneMax;
-			float _HalftoneDiffuseLower;
-			float _HalftoneDiffuseUpper;			
-			float _HalftoneAdditiveLower;
-			float _HalftoneAdditiveUpper;
 
 #endif
-			inline half TriplanarMappingSingle(Texture2D tex, SamplerState texSampler, float3 weights, float3 worldPos, float scale)
-			{
-				float2 xUV = worldPos.zy / scale;
-				float2 yUV = worldPos.xz / scale;
-				float2 zUV = worldPos.xy / scale;
 
-				half sampleX = SAMPLE_TEXTURE2D(tex, texSampler, xUV).r;
-				half sampleY = SAMPLE_TEXTURE2D(tex, texSampler, yUV).r;
-				half sampleZ = SAMPLE_TEXTURE2D(tex, texSampler, zUV).r;
-
-				return sampleX * weights.x + sampleY * weights.y + sampleZ * weights.z;
-			}
-
-			inline half3 TriplanarWeights(float3 normal)
-			{
-				half3 blend = pow(abs(normal), 4);
-				blend = normalize(max(blend, 0.0001));
-				return blend / dot(blend, float3(1, 1, 1));
-			}
-#if HALFTONE_RIM || HALFTONE
-			float4 DistanceBasedScreenPos(float4 clipPos, float scale) 
-			{
-				float screenAspect = _ScreenParams.x / _ScreenParams.y;
-				float4 screenPos = ComputeScreenPos(clipPos);
-				screenPos.x *= screenAspect;
-				float4 clipPivot = mul(UNITY_MATRIX_MVP, float4(0, 0, 0, 1));
-				float4 screenPivot = ComputeScreenPos(clipPivot);
-				screenPivot.x *= screenAspect;
-				float4 worldPivot = mul(unity_ObjectToWorld, float4(0, 0, 0, 1));
-				screenPos = (((screenPos / screenPos.w) * scale - (screenPivot / screenPivot.w) * scale)) * length(_WorldSpaceCameraPos.xyz - worldPivot.xyz);
-				return screenPos;
-			}
-#endif
 			float GetDiffuse(float NDotL)
 			{
 				//float diff = (NDotL - 0.5) * _DiffuseContrast + 0.5;
@@ -298,12 +215,7 @@ Shader "NGJ22/Toon Surface"
 #if RIM ||SPECULAR
 				o.viewDir = _WorldSpaceCameraPos - vertexInput.positionWS.xyz; 
 #endif
-#if HALFTONE_RIM && !HALFTONE_TRIPLANAR
-				o.halftoneRimScreenPos = DistanceBasedScreenPos(o.pos, _HalftoneScaleRim);
-#endif
-#if HALFTONE && !HALFTONE_TRIPLANAR
-				o.halftoneScreenPos = DistanceBasedScreenPos(o.pos, _HalftoneScale);
-#endif
+				
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				o.screenPos = ComputeScreenPos(o.pos);
 				o.screenPos.x *= _ScreenParams.x / _ScreenParams.y;
@@ -314,11 +226,7 @@ Shader "NGJ22/Toon Surface"
             {
                 half4 baseCol = tex2D(_MainTex, i.uv) * i.color;
 				float3 worldNormal = normalize(i.worldNormal);
-
-#if HALFTONE_TRIPLANAR
-				half3 triplanarWeights = TriplanarWeights(worldNormal);
-#endif
-
+            	
 #if defined(_MAIN_LIGHT_SHADOWS) && defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 				Light mainLight = GetMainLight(i.shadowCoord);
 #else
@@ -361,41 +269,14 @@ Shader "NGJ22/Toon Surface"
 
 				lightVal += rim;
 #endif
-
-
-#if HALFTONE_RIM
-				float halftoneSampleRim = 0;
-#if HALFTONE_TRIPLANAR
-				halftoneSampleRim = TriplanarMappingSingle(_HalftonePatternRim, sampler_HalftonePatternRim, triplanarWeights, i.worldPos, _HalftoneScaleRim);
-#else
-				halftoneSampleRim = 1 - SAMPLE_TEXTURE2D(_HalftonePatternRim, sampler_HalftonePatternRim, i.halftoneRimScreenPos.xy).a;
-#endif
-				float rimHalftoneBase = SafePositivePow(NDotV, _HalftoneRimPower);
-				float rimHalftoneA = diff * (rim + GetHalftone(halftoneSampleRim, rim + rimHalftoneBase, _HalftoneRimMin, _HalftoneRimMax));
-				//float rimHalftoneB = diff * (rim + GetHalftone(halftoneSampleRim, rim + rimHalftoneBase * 0.4, _HalftoneRimMin, _HalftoneRimMax + .2));
-				baseCol.rgb = lerp(baseCol.rgb, _HalftoneRimColor.rgb, rimHalftoneA);
-#endif
+#if AMBIENT
 				float3 ambient = SampleSH(worldNormal);
-            	float4 col = float4(ambient * baseCol, 1);
-            	float4 colRef = col;
-				//col.rgb = col.rgb * lightVal * (ambient + mainLight.color.rgb) * shadowAtten;
-
-#if HALFTONE
-				float halftoneSample;
-
-	#if HALFTONE_TRIPLANAR
-				halftoneSample = TriplanarMappingSingle(_HalftoneTexture, sampler_HalftoneTexture, triplanarWeights, i.worldPos, _HalftoneScale);
-	#else
-				halftoneSample = SAMPLE_TEXTURE2D(_HalftoneTexture, sampler_HalftoneTexture, i.halftoneScreenPos.xy).r;
-	#endif
-				halftoneSample = lerp(_HalftoneMin, _HalftoneMax, halftoneSample);
-				halftoneSample *= 1 - saturate(i.screenPos.w / 12.5);
-				float  halftoneValue = lerp(0, halftoneSample ,(smoothstep(_HalftoneDiffuseLower, _HalftoneDiffuseUpper, NDotLRaw - (1 - shadowAtten))));
-				col.rgb *= min(1, 0.2 + lerp(halftoneValue, 0.8, smoothstep(0, 1, diff)));
-				
-				//float halftoneChange = fwidth(halftoneValue) * 0.5;
-				//diff = smoothstep(halftoneValue - halftoneChange, halftoneValue + halftoneChange, diff);
+#else
+            	float3 ambient = 1;
 #endif
+            	
+            	float4 col = float4(ambient * baseCol, baseCol.a);
+            	float4 colRef = col;
 
 #ifdef _ADDITIONAL_LIGHTS
 				int additionalLightsCount = GetAdditionalLightsCount();
@@ -412,12 +293,6 @@ Shader "NGJ22/Toon Surface"
 					float addNDotL = max(0, dot(worldNormal, light.direction)) * atten * addShadow;
 					float add = smoothstep(_DiffuseMin, _DiffuseMax, addNDotL);
                 	
-                	
-#if HALFTONE
-					float addHalftone = lerp(halftoneSample, 1 ,(smoothstep(_HalftoneAdditiveLower, _HalftoneAdditiveUpper, addNDotL)));
-					addNDotL *= addHalftone;
-#endif
-					
                     col.rgb += add * light.color * colRef.rgb;
 					
 #if SPECULAR

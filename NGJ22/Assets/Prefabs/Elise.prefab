@@ -627,6 +627,7 @@ GameObject:
   - component: {fileID: 7264329450960448906}
   - component: {fileID: 4102698085636690679}
   - component: {fileID: 960234941058680918}
+  - component: {fileID: 6395922306326554408}
   - component: {fileID: 6737701591403615699}
   m_Layer: 0
   m_Name: TV
@@ -712,6 +713,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6395922306326554408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520742165059870991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de735c464204c49fcaa702f33779c5f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6737701591403615699
 MonoBehaviour:
   m_ObjectHideFlags: 0

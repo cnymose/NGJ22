@@ -14,6 +14,8 @@ public class FirstPersonController : MonoBehaviour
     float headTilt = 0f;
 
     [SerializeField] float interactLength = 100f;
+    [SerializeField] GameObject soundStuff;
+
 
     bool holdingItem = false;
     GameObject heldItem;
@@ -31,6 +33,7 @@ public class FirstPersonController : MonoBehaviour
         BodyMovement();
         CameraMovement();
         RayCast();
+        HeldItemVelocity();
     }
     
     void BodyMovement()
@@ -82,7 +85,6 @@ public class FirstPersonController : MonoBehaviour
                     {
                         c.enabled = false;
                     }
-                    //heldItem.GetComponent<SphereCollider>().enabled = false;
                     heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                     heldItem.transform.parent = camera.transform;
                     holdingItem = true;
@@ -110,17 +112,27 @@ public class FirstPersonController : MonoBehaviour
             {
                 c.enabled = true;
             }
-            //heldItem.GetComponent<SphereCollider>().enabled = true;
             heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             heldItem.transform.parent = null;
             holdingItem = false;
-            bool objectSnap = heldItem.GetComponent<ObjectSnapping>().CheckSnapToPoint();
-            if(objectSnap == true)
+            int objectSnapID = heldItem.GetComponent<ObjectSnapping>().CheckSnapToPoint();
+            if(objectSnapID == 1) //Bobby
             {
-
+                soundStuff.GetComponent<SoundtrackManager>().AddToChair();
+            } else if (objectSnapID == 2) //Elise
+            {
+                soundStuff.GetComponent<SoundtrackManager>().AddToTV();
             }
             heldItem = null;
         }
+    }
+
+    void HeldItemVelocity()
+    {
+        if(holdingItem == true)
+        {
+            Debug.Log(heldItem.GetComponent<Rigidbody>().velocity);
+        } 
     }
 
 

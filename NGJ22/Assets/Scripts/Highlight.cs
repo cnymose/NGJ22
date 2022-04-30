@@ -6,9 +6,15 @@ public class Highlight : MonoBehaviour
 {
     private static int outlinePropertyId = Shader.PropertyToID("_OutlineWidth");
     private static int outlineColorPropertyId = Shader.PropertyToID("_OutlineColor");
-
-    [SerializeField] private Renderer[] targetRenderers;
+    
     [ColorUsage(false, true), SerializeField] private Color outlineColor;
+
+    private Renderer[] targetRenderers;
+
+    private void Awake()
+    {
+        targetRenderers = GetComponentsInChildren<Renderer>();
+    }
     
     public void EnableHighlight()
     {

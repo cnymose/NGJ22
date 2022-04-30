@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 79720422}
   - component: {fileID: 79720421}
   - component: {fileID: 79720420}
+  - component: {fileID: 79720423}
   m_Layer: 0
   m_Name: TV-Light
   m_TagString: Untagged
@@ -173,10 +174,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.7028302, g: 1, b: 0.9905961, a: 1}
-  m_Intensity: 2.56
-  m_Range: 4.59
-  m_SpotAngle: 132.26517
-  m_InnerSpotAngle: 124.70697
+  m_Intensity: 1.44
+  m_Range: 2.87
+  m_SpotAngle: 160.57416
+  m_InnerSpotAngle: 98.575584
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -231,13 +232,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 79720419}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -2.043, y: 0.77599835, z: -0.854}
+  m_LocalPosition: {x: -2.283, y: 0.946, z: 1.517}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
+--- !u!114 &79720423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79720419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcced468c8b654484812417e3d0d62ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 79720421}
+  variance: 0.5
+  flickerDuration: 0.1
 --- !u!1 &1462116677
 GameObject:
   m_ObjectHideFlags: 0

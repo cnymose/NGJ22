@@ -12,6 +12,8 @@ Shader "NGJ22/TV"
 		_ScanColorAdd("Scan Color Add", Range(-1,1)) = 0
 		[Toggle(WHITE_NOISE)] _WhiteNoise("White Noise", Float) = 0
 		_WhiteNoiseSteps("White Noise Steps", Float) = 100
+		
+		_Add("Add", Float) = 0
 	}
     SubShader
     {
@@ -39,6 +41,7 @@ Shader "NGJ22/TV"
 			float _ScanDistort;
 			float _ScanColorAdd;
 			float _WhiteNoiseSteps;
+			float _Add;
 			
 			struct appdata
             {
@@ -86,6 +89,7 @@ Shader "NGJ22/TV"
             	#endif
             	
             	col += scan * _ScanColorAdd;
+            	col += _Add;
             	return col;
 			}
 			ENDHLSL

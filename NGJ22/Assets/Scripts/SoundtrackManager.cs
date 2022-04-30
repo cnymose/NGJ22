@@ -16,13 +16,10 @@ public class SoundtrackManager : MonoBehaviour
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.N))
-            addToTV();
-        if(Input.GetKeyDown(KeyCode.B))
-            addToChair();
+        
     }
 
-    public void addToTV() {
+    public void AddToTV() {
         if (TotalItemsCollected == 0)
             audio.EventInstance.start();
         TVItemsCollected++;
@@ -32,7 +29,7 @@ public class SoundtrackManager : MonoBehaviour
         whiteNoise.volume((1 -  (float)TotalItemsCollected/6));
     }
 
-    public void addToChair() {
+    public void AddToChair() {
         if (TotalItemsCollected == 0)
             audio.EventInstance.start();
         ChairItemsCollected++;

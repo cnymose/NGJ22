@@ -24,7 +24,6 @@ Material:
   m_Shader: {fileID: 4800000, guid: 37d1e83f8387d4ef0969439657691c58, type: 3}
   m_ValidKeywords:
   - DIFFUSE
-  - RIM
   - SPECULAR
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -149,7 +148,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Rim: 1
+    - _Rim: 0
     - _RimMax: 1
     - _RimMin: 0
     - _RimPower: 2.3
@@ -158,10 +157,10 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _Specular: 1
     - _SpecularHighlights: 1
-    - _SpecularMax: 0.01
-    - _SpecularMin: 0
-    - _SpecularPower: 88
-    - _SpecularScale: 0.32
+    - _SpecularMax: 0.245
+    - _SpecularMin: 0.237
+    - _SpecularPower: 114
+    - _SpecularScale: 0.44
     - _SrcBlend: 1
     - _Surface: 0
     - _VertexColor: 0

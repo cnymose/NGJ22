@@ -341,13 +341,14 @@ Shader "NGJ22/Toon Surface"
 #endif
 
 				NDotL *= shadowAtten;
+				float diff = GetDiffuse(NDotL);				
 
 #if SPECULAR
 				float3 halfVector = normalize(i.viewDir.xyz + mainLight.direction.xyz);
 				float NDotH = saturate(dot(worldNormal,halfVector));
 				float spec = SafePositivePow(NDotH, _SpecularPower);
             	spec = smoothstep(_SpecularMin, _SpecularMax, spec);
-				lightVal += spec * _SpecularScale;
+				lightVal += spec * _SpecularScale * diff;
 #endif
 
 #if RIM
@@ -361,7 +362,6 @@ Shader "NGJ22/Toon Surface"
 				lightVal += rim;
 #endif
 
-				float diff = GetDiffuse(NDotL);				
 
 #if HALFTONE_RIM
 				float halftoneSampleRim = 0;

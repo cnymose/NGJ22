@@ -37,9 +37,9 @@ public class ObjectSnapping : MonoBehaviour
     {
         for(int i = 0; i < snappedVisuals.Length; i++)
         {
-            associatedCharacter.GetComponent<TaskPaperInteraction>().CrossOutTask(taskNumber);
             snappedVisuals[i].SetActive(true);
         }
+        associatedCharacter.GetComponent<TaskPaperInteraction>().CrossOutTask(taskNumber);
         Destroy(gameObject);
     }
 }

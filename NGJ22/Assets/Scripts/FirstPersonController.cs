@@ -31,6 +31,7 @@ public class FirstPersonController : MonoBehaviour
         BodyMovement();
         CameraMovement();
         RayCast();
+        HeldItemVelocity();
     }
     
     void BodyMovement()
@@ -82,7 +83,6 @@ public class FirstPersonController : MonoBehaviour
                     {
                         c.enabled = false;
                     }
-                    //heldItem.GetComponent<SphereCollider>().enabled = false;
                     heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                     heldItem.transform.parent = camera.transform;
                     holdingItem = true;
@@ -110,17 +110,24 @@ public class FirstPersonController : MonoBehaviour
             {
                 c.enabled = true;
             }
-            //heldItem.GetComponent<SphereCollider>().enabled = true;
             heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             heldItem.transform.parent = null;
             holdingItem = false;
             bool objectSnap = heldItem.GetComponent<ObjectSnapping>().CheckSnapToPoint();
             if(objectSnap == true)
             {
-
+                //Add counter here.. i++ variable or whatever
             }
             heldItem = null;
         }
+    }
+
+    void HeldItemVelocity()
+    {
+        if(holdingItem == true)
+        {
+            Debug.Log(heldItem.GetComponent<Rigidbody>().velocity);
+        } 
     }
 
 

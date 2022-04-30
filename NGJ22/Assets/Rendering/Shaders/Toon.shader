@@ -332,7 +332,7 @@ Shader "NGJ22/Toon Surface"
 				float NDotLRaw = dot(worldNormal, lightDir);
 				float NDotL = max(0, NDotLRaw);
 				float shadowAtten = 1;
-#if _MAIN_LIGHT_SHADOWS
+#if MAIN_LIGHT_SHADOWS
 		#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
 					shadowAtten = mainLight.shadowAttenuation;
 		#elif defined(MAIN_LIGHT_CALCULATE_SHADOWS)

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Brown
+  m_Name: Black
   m_Shader: {fileID: 4800000, guid: 37d1e83f8387d4ef0969439657691c58, type: 3}
   m_ValidKeywords:
   - DIFFUSE
@@ -118,7 +118,7 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _Diffuse: 1
-    - _DiffuseMax: 0.055
+    - _DiffuseMax: 1
     - _DiffuseMin: 0
     - _DstBlend: 0
     - _Emission: 0
@@ -148,8 +148,8 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Rim: 0
-    - _RimMax: 1
-    - _RimMin: 0
+    - _RimMax: 0.482
+    - _RimMin: 0.064
     - _RimPower: 2
     - _RimScale: 1
     - _Smoothness: 0.5
@@ -167,7 +167,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.5377358, g: 0.3071506, b: 0.1953097, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HalftoneRimColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}

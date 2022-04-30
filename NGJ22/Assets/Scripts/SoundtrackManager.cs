@@ -8,18 +8,18 @@ public class SoundtrackManager : MonoBehaviour
     private int ChairItemsCollected = 0;
     private int TotalItemsCollected = 0;
     private FMODUnity.StudioEventEmitter audio;
-    private FMODUnity.StudioEventEmitter whiteNoise;
+    private WhiteNoiseHandler whiteNoise;
 
     private void Start() {
         audio = GetComponent<FMODUnity.StudioEventEmitter>();
-        // whiteNoise = FindObjectOfType
+        whiteNoise = FindObjectOfType<WhiteNoiseHandler>();
     }
 
     private void Update() {
-        // if(Input.GetKeyDown(KeyCode.N))
-        //     addToTV();
-        // if(Input.GetKeyDown(KeyCode.B))
-        //     addToChair();
+        if(Input.GetKeyDown(KeyCode.N))
+            addToTV();
+        if(Input.GetKeyDown(KeyCode.B))
+            addToChair();
     }
 
     public void addToTV() {
@@ -29,6 +29,7 @@ public class SoundtrackManager : MonoBehaviour
         TotalItemsCollected++;
         audio.EventInstance.setParameterByName("EliseItems", TVItemsCollected);
         audio.EventInstance.setParameterByName("TotalItems", TVItemsCollected+ChairItemsCollected);
+        whiteNoise.volume((1 -  (float)TotalItemsCollected/6));
     }
 
     public void addToChair() {
@@ -38,5 +39,6 @@ public class SoundtrackManager : MonoBehaviour
         TotalItemsCollected++;
         audio.EventInstance.setParameterByName("BobbyItems", ChairItemsCollected);
         audio.EventInstance.setParameterByName("TotalItems", ChairItemsCollected+TVItemsCollected);
+        whiteNoise.volume((1 -  (float)TotalItemsCollected/6));
     }
 }

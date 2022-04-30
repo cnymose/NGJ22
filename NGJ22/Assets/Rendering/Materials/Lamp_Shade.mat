@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gloves
+  m_Name: Lamp_Shade
   m_Shader: {fileID: 4800000, guid: 37d1e83f8387d4ef0969439657691c58, type: 3}
   m_ValidKeywords:
   - DIFFUSE
@@ -156,10 +156,10 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _Specular: 0
     - _SpecularHighlights: 1
-    - _SpecularMax: 1
-    - _SpecularMin: 0
-    - _SpecularPower: 2
-    - _SpecularScale: 1
+    - _SpecularMax: 0.51
+    - _SpecularMin: 0.5
+    - _SpecularPower: 81.8
+    - _SpecularScale: 0.56
     - _SrcBlend: 1
     - _Surface: 0
     - _VertexColor: 0
@@ -167,7 +167,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.41037738, g: 0.46584624, b: 1, a: 1}
+    - _Color: {r: 0.30838376, g: 0.5332466, b: 0.6603774, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HalftoneRimColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}

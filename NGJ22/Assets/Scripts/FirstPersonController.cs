@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class FirstPersonController : MonoBehaviour
@@ -20,7 +21,8 @@ public class FirstPersonController : MonoBehaviour
     bool holdingItem = false;
     GameObject heldItem;
     GameObject taskPaper;
-
+    private Highlight currentHighlight;
+    
     void Start()
     {
         Cursor.visible = false;
@@ -71,7 +73,9 @@ public class FirstPersonController : MonoBehaviour
         }
         else if (Physics.Raycast(ray, out hit, interactLength))
         {
-            if (Input.GetMouseButtonDown(0) && holdingItem == false)
+            DoHighlight(hit.transform);
+            
+            if (Input.GetMouseButtonDown(0) && !holdingItem)
             {
                 if (hit.transform.gameObject.tag == "Interactable")
                 {
@@ -89,12 +93,14 @@ public class FirstPersonController : MonoBehaviour
                 }
             }
         }
-        if (Input.GetMouseButtonUp(0) && holdingItem == true)
+        if (Input.GetMouseButtonUp(0) && holdingItem)
         {
             if (Physics.Raycast(ray, out hit, interactLength+10) && hit.transform.gameObject.tag != "Interactable" && Vector3.Distance(camera.transform.position, heldItem.transform.position) > Vector3.Distance(camera.transform.position, hit.point))
             {
                 heldItem.transform.position = hit.point + new Vector3(0,.1f,0);
             }
+            
+            EndHighlight();
             heldItem.GetComponent<Rigidbody>().useGravity = true;
             heldItem.GetComponent<SphereCollider>().enabled = true;
             heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -106,6 +112,28 @@ public class FirstPersonController : MonoBehaviour
 
             }
             heldItem = null;
+        }
+    }
+
+
+
+    private void DoHighlight(Transform transform)
+    {
+        var highlight = transform.GetComponent<Highlight>();
+        if (highlight != null)
+        {
+            EndHighlight();
+            currentHighlight = highlight;
+            currentHighlight.EnableHighlight();
+        }
+    }
+
+    private void EndHighlight()
+    {
+        if (currentHighlight != null)
+        {
+            currentHighlight.DisableHighlight();
+            currentHighlight = null;
         }
     }
 }

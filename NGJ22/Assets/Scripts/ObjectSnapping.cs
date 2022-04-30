@@ -7,7 +7,8 @@ public class ObjectSnapping : MonoBehaviour
 
     [SerializeField] GameObject snapPoint;
     [SerializeField] float snapDistance;
-    [System.NonSerialized] public bool snapped = false;
+
+    [SerializeField] GameObject[] snappedVisuals;
 
 
     void Start()
@@ -30,10 +31,10 @@ public class ObjectSnapping : MonoBehaviour
 
     void SnapToPoint()
     {
-        snapped = true;
-        gameObject.GetComponent<Rigidbody>().useGravity = false;
-        gameObject.GetComponent<SphereCollider>().enabled = false;
-        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        gameObject.transform.position = snapPoint.transform.position;
+        for(int i = 0; i < snappedVisuals.Length; i++)
+        {
+            snappedVisuals[i].SetActive(true);
+        }
+        Destroy(gameObject);
     }
 }

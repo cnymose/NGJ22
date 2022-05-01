@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 8464031980950748167}
   - component: {fileID: 1092051303610779256}
   - component: {fileID: 8565188363126591385}
+  - component: {fileID: 4424907446699373106}
   m_Layer: 0
   m_Name: Gloves
   m_TagString: Interactable
@@ -462,6 +463,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
+--- !u!114 &4424907446699373106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134476064796937045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b854acbe274cb4aba8a5df93fef08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1151750884095685593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,6 +1453,8 @@ MonoBehaviour:
   objectsToPlace: 0
   cakeSpawner: {fileID: 5489704879208994194}
   cakePrefab: {fileID: 0}
+  bobbyNameTag: {fileID: 0}
+  eliseNameTag: {fileID: 0}
 --- !u!136 &5722120127677281374
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3465,6 +3480,7 @@ GameObject:
   - component: {fileID: 4793816117106881864}
   - component: {fileID: 832558090986980439}
   - component: {fileID: 7060337175196370491}
+  - component: {fileID: 984801873765153170}
   m_Layer: 0
   m_Name: Lamp
   m_TagString: Interactable
@@ -3599,6 +3615,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
+--- !u!114 &984801873765153170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3182631349283115778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b854acbe274cb4aba8a5df93fef08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3252931829334229599
 GameObject:
   m_ObjectHideFlags: 0
@@ -3697,6 +3725,7 @@ GameObject:
   - component: {fileID: 1559483571994380048}
   - component: {fileID: 5179116743148970588}
   - component: {fileID: 6588001953931528549}
+  - component: {fileID: 5030899321658146422}
   m_Layer: 0
   m_Name: Beer
   m_TagString: Interactable
@@ -3831,6 +3860,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
+--- !u!114 &5030899321658146422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457861463042808984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b854acbe274cb4aba8a5df93fef08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3557968660201854638
 GameObject:
   m_ObjectHideFlags: 0
@@ -5447,6 +5488,7 @@ GameObject:
   - component: {fileID: 1828336732550391014}
   - component: {fileID: 1090269566366853989}
   - component: {fileID: 4372912742093410588}
+  - component: {fileID: 1916587195577243361}
   m_Layer: 0
   m_Name: Leather
   m_TagString: Interactable
@@ -5581,6 +5623,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
+--- !u!114 &1916587195577243361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5667526559417826569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b854acbe274cb4aba8a5df93fef08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6172583086951089243
 GameObject:
   m_ObjectHideFlags: 0
@@ -5923,6 +5977,7 @@ GameObject:
   - component: {fileID: 4774006680803112817}
   - component: {fileID: 2399579877567336139}
   - component: {fileID: 2151141344876663075}
+  - component: {fileID: 8564827913906687585}
   m_Layer: 0
   m_Name: Plunger
   m_TagString: Interactable
@@ -6058,6 +6113,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
+--- !u!114 &8564827913906687585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6551216724361011738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b854acbe274cb4aba8a5df93fef08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6567850348347572392
 GameObject:
   m_ObjectHideFlags: 0
@@ -6474,6 +6541,7 @@ GameObject:
   - component: {fileID: 5212758615277495801}
   - component: {fileID: 6292642219107264919}
   - component: {fileID: 6438924050924622593}
+  - component: {fileID: 415456318024606674}
   m_Layer: 0
   m_Name: Balloon
   m_TagString: Interactable
@@ -6610,6 +6678,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
+--- !u!114 &415456318024606674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474380962417912672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b854acbe274cb4aba8a5df93fef08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7659551251160855891
 GameObject:
   m_ObjectHideFlags: 0
@@ -6708,6 +6788,7 @@ GameObject:
   - component: {fileID: 1431689626668301960}
   - component: {fileID: 1876682285460325919}
   - component: {fileID: 656397755113134643}
+  - component: {fileID: 2900917844299806587}
   m_Layer: 0
   m_Name: Boots
   m_TagString: Interactable
@@ -6842,6 +6923,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineColor: {r: 2.75, g: 2.75, b: 1.35, a: 1}
+--- !u!114 &2900917844299806587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750294586096462202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b854acbe274cb4aba8a5df93fef08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8197266426611373084
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class FirstPersonController : MonoBehaviour
     GameObject heldItem;
     [SerializeField] GameObject taskPaper;
     [SerializeField] GameObject fade;
-    float fadeValue = 255;
+    float fadeValue = 230;
     [SerializeField] float fadeSpeed;
     int placedCounter;
     int bobbyCounter;

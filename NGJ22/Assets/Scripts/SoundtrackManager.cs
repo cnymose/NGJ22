@@ -46,7 +46,6 @@ public class SoundtrackManager : MonoBehaviour
     }
 
     public void QueBirthdaySong() {
-        interactSound.Play();
         audio.EventInstance.setParameterByName("StartBirthday", 1);
     }
 

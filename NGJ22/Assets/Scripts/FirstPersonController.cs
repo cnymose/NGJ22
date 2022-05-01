@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Rendering;
 
 public class FirstPersonController : MonoBehaviour
 {
@@ -36,6 +37,9 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] Animator bobbyAnimator;
     [SerializeField] Animator eliseAnimator;
     bool fadeOut = false;
+
+    //[SerializeField] GameObject tvScreen;
+    public Material tvMaterial;
 
     private Highlight currentHighlight;
     
@@ -157,6 +161,8 @@ public class FirstPersonController : MonoBehaviour
                 if (eliseCounter == 3)
                 {
                     eliseAnimator.SetBool("dance", true);
+                    LocalKeyword exampleFeatureKeyword = new LocalKeyword(tvMaterial.shader, "WHITE_NOISE");
+                    tvMaterial.DisableKeyword(exampleFeatureKeyword);
                     eliseNameTag.SetActive(true);
                 }
                 CheckPlacedCounter();
@@ -167,13 +173,11 @@ public class FirstPersonController : MonoBehaviour
 
     void CheckPlacedCounter() 
     {
-        Debug.Log("Wow");
         if (placedCounter == objectsToPlace)
         {
             soundStuff.GetComponent<SoundtrackManager>().QueBirthdaySong();
             Instantiate(cakePrefab, cakeSpawner.position, Quaternion.identity);
             StartCoroutine(WaitFade());
-            Debug.Log("instantiated");
         }
     }
 

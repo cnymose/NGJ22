@@ -135,6 +135,7 @@ public class FirstPersonController : MonoBehaviour
             {
                 placedCounter++;
                 bobbyCounter++;
+                soundStuff.GetComponent<SoundtrackManager>().Interact();
                 soundStuff.GetComponent<SoundtrackManager>().AddToChair();
                 if(bobbyCounter == 4)
                 {
@@ -145,6 +146,7 @@ public class FirstPersonController : MonoBehaviour
             {
                 placedCounter++;
                 eliseCounter++;
+                soundStuff.GetComponent<SoundtrackManager>().Interact();
                 soundStuff.GetComponent<SoundtrackManager>().AddToTV();
                 if (eliseCounter == 3)
                 {
@@ -161,6 +163,7 @@ public class FirstPersonController : MonoBehaviour
         Debug.Log("Wow");
         if (placedCounter == objectsToPlace)
         {
+            soundStuff.GetComponent<SoundtrackManager>().QueBirthdaySong();
             Instantiate(cakePrefab, cakeSpawner.position, Quaternion.identity);
             Debug.Log("instantiated");
         }

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Dorm Room.unity
+    guid: 696ea3bacabfe934b9b6d25ca566ed97
   m_configObjects: {}

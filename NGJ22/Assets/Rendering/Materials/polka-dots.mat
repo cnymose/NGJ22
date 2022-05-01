@@ -64,7 +64,7 @@ Material:
     - _HalftoneScaleRim: 64
     - _HalftoneTriplanr: 0
     - _LightAffectsRim: 0
-    - _OutlineWidth: 2
+    - _OutlineWidth: 0
     - _Rim: 0
     - _RimMax: 1
     - _RimMin: 0

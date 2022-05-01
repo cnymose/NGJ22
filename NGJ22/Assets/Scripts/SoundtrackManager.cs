@@ -18,8 +18,8 @@ public class SoundtrackManager : MonoBehaviour
     }
 
     private void Update() {
-        if (Input.anyKeyDown)
-            Interact();
+        // if (Input.anyKeyDown)
+        //     Interact();
     }
 
     public void AddToTV() {
@@ -43,6 +43,11 @@ public class SoundtrackManager : MonoBehaviour
     }
     public void Interact() {
         interactSound.Play();
+    }
+
+    public void QueBirthdaySong() {
+        interactSound.Play();
+        audio.EventInstance.setParameterByName("StartBirthday", 1);
     }
 
 

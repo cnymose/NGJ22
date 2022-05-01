@@ -24,6 +24,10 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] GameObject fade;
     float fadeValue = 255;
     [SerializeField] float fadeSpeed;
+    int placedCounter;
+    [SerializeField] int objectsToPlace;
+    [SerializeField] Transform cakeSpawner;
+    [SerializeField] GameObject cakePrefab;
     private Highlight currentHighlight;
     
     void Start()
@@ -124,12 +128,26 @@ public class FirstPersonController : MonoBehaviour
             int objectSnapID = heldItem.GetComponent<ObjectSnapping>().CheckSnapToPoint();
             if(objectSnapID == 1) //Bobby
             {
+                placedCounter++;
                 soundStuff.GetComponent<SoundtrackManager>().AddToChair();
+                CheckPlacedCounter();
             } else if (objectSnapID == 2) //Elise
             {
+                placedCounter++;
                 soundStuff.GetComponent<SoundtrackManager>().AddToTV();
+                CheckPlacedCounter();
             }
             heldItem = null;
+        }
+    }
+
+    void CheckPlacedCounter() 
+    {
+        Debug.Log("Wow");
+        if (placedCounter == objectsToPlace)
+        {
+            Instantiate(cakePrefab, cakeSpawner.position, Quaternion.identity);
+            Debug.Log("instantiated");
         }
     }
 
@@ -146,7 +164,8 @@ public class FirstPersonController : MonoBehaviour
     {
         if(holdingItem == true)
         {
-            Debug.Log(heldItem.GetComponent<Rigidbody>().velocity);
+            //Maybe try stuff with throwing here idk
+            //Debug.Log(heldItem.GetComponent<Rigidbody>().velocity);
         } 
     }
 

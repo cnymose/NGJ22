@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FirstPersonController : MonoBehaviour
 {
@@ -19,13 +20,17 @@ public class FirstPersonController : MonoBehaviour
 
     bool holdingItem = false;
     GameObject heldItem;
-    GameObject taskPaper;
+    [SerializeField] GameObject taskPaper;
+    [SerializeField] GameObject fade;
+    float fadeValue = 255;
+    [SerializeField] float fadeSpeed;
     private Highlight currentHighlight;
     
     void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        taskPaper.transform.parent.GetComponent<TaskPaperInteraction>().PickUpTaskList();
     }
 
     void Update()
@@ -34,6 +39,7 @@ public class FirstPersonController : MonoBehaviour
         CameraMovement();
         RayCast();
         HeldItemVelocity();
+        FadeIntro();
     }
     
     void BodyMovement()
@@ -124,6 +130,15 @@ public class FirstPersonController : MonoBehaviour
                 soundStuff.GetComponent<SoundtrackManager>().AddToTV();
             }
             heldItem = null;
+        }
+    }
+
+    void FadeIntro()
+    {
+        if(fadeValue > 0)
+        {
+            fade.GetComponent<Image>().color = new Color32(0, 0, 0, (byte)fadeValue);
+            fadeValue -= fadeSpeed;
         }
     }
 

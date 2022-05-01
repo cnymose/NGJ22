@@ -58,9 +58,6 @@ public class FirstPersonController : MonoBehaviour
         Vector3 movement = new Vector3(x, 0, z);
         movement = Vector3.ClampMagnitude(movement, 1);
         transform.Translate(movement * speed * Time.deltaTime);
-
-
-        //gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + movement * Time.deltaTime * speed);
     }
 
     void CameraMovement()

@@ -14,6 +14,7 @@ public class ObjectSnapping : MonoBehaviour
     [SerializeField] int taskNumber;
     [SerializeField] int characterID;
 
+    [SerializeField] GameObject confetti;
 
     void Start()
     {
@@ -41,6 +42,7 @@ public class ObjectSnapping : MonoBehaviour
         {
             snappedVisuals[i].SetActive(true);
         }
+        Instantiate(confetti, snapPoint.transform.position, Quaternion.identity);
         associatedCharacter.GetComponent<TaskPaperInteraction>().CrossOutTask(taskNumber);
         Destroy(gameObject);
     }

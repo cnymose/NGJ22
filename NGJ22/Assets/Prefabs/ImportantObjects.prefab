@@ -449,7 +449,8 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 4202537965200615521}
   taskNumber: 1
-  characterID: 0
+  characterID: 2
+  confetti: {fileID: 3877943020852883057, guid: ba0007935237e4834af2f93e1c6c8d73, type: 3}
 --- !u!114 &8565188363126591385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1295,6 +1296,7 @@ MonoBehaviour:
   associatedCharacter: {fileID: 3073017352254961749}
   taskNumber: 2
   characterID: 0
+  confetti: {fileID: 0}
 --- !u!114 &1445057353783275934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,7 +1498,7 @@ RectTransform:
   m_GameObject: {fileID: 2586897774069720730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5885828826430302381}
@@ -3601,7 +3603,8 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 4089315360932409307}
   taskNumber: 3
-  characterID: 0
+  characterID: 1
+  confetti: {fileID: 3877943020852883057, guid: ba0007935237e4834af2f93e1c6c8d73, type: 3}
 --- !u!114 &7060337175196370491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3846,7 +3849,8 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 4089315360932409307}
   taskNumber: 0
-  characterID: 0
+  characterID: 1
+  confetti: {fileID: 3877943020852883057, guid: ba0007935237e4834af2f93e1c6c8d73, type: 3}
 --- !u!114 &6588001953931528549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5045,6 +5049,7 @@ MonoBehaviour:
   associatedCharacter: {fileID: 3073017352254961749}
   taskNumber: 1
   characterID: 0
+  confetti: {fileID: 0}
 --- !u!114 &2206168185164576335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5609,7 +5614,8 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 4089315360932409307}
   taskNumber: 4
-  characterID: 0
+  characterID: 1
+  confetti: {fileID: 3877943020852883057, guid: ba0007935237e4834af2f93e1c6c8d73, type: 3}
 --- !u!114 &4372912742093410588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6099,7 +6105,8 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 4202537965200615521}
   taskNumber: 2
-  characterID: 0
+  characterID: 2
+  confetti: {fileID: 3877943020852883057, guid: ba0007935237e4834af2f93e1c6c8d73, type: 3}
 --- !u!114 &2151141344876663075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6664,7 +6671,8 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 4202537965200615521}
   taskNumber: 0
-  characterID: 0
+  characterID: 2
+  confetti: {fileID: 3877943020852883057, guid: ba0007935237e4834af2f93e1c6c8d73, type: 3}
 --- !u!114 &6438924050924622593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6909,7 +6917,8 @@ MonoBehaviour:
   - {fileID: 0}
   associatedCharacter: {fileID: 4089315360932409307}
   taskNumber: 1
-  characterID: 0
+  characterID: 1
+  confetti: {fileID: 3877943020852883057, guid: ba0007935237e4834af2f93e1c6c8d73, type: 3}
 --- !u!114 &656397755113134643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7211,6 +7220,7 @@ MonoBehaviour:
   associatedCharacter: {fileID: 3073017352254961749}
   taskNumber: 3
   characterID: 0
+  confetti: {fileID: 0}
 --- !u!114 &4408801387171270308
 MonoBehaviour:
   m_ObjectHideFlags: 0

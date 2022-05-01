@@ -25,9 +25,14 @@ public class FirstPersonController : MonoBehaviour
     float fadeValue = 255;
     [SerializeField] float fadeSpeed;
     int placedCounter;
+    int bobbyCounter;
+    int eliseCounter;
     [SerializeField] int objectsToPlace;
     [SerializeField] Transform cakeSpawner;
     [SerializeField] GameObject cakePrefab;
+    [SerializeField] GameObject bobbyNameTag;
+    [SerializeField] GameObject eliseNameTag;
+
     private Highlight currentHighlight;
     
     void Start()
@@ -129,12 +134,22 @@ public class FirstPersonController : MonoBehaviour
             if(objectSnapID == 1) //Bobby
             {
                 placedCounter++;
+                bobbyCounter++;
                 soundStuff.GetComponent<SoundtrackManager>().AddToChair();
+                if(bobbyCounter == 4)
+                {
+                    bobbyNameTag.SetActive(true);
+                }
                 CheckPlacedCounter();
             } else if (objectSnapID == 2) //Elise
             {
                 placedCounter++;
+                eliseCounter++;
                 soundStuff.GetComponent<SoundtrackManager>().AddToTV();
+                if (eliseCounter == 3)
+                {
+                    eliseNameTag.SetActive(true);
+                }
                 CheckPlacedCounter();
             }
             heldItem = null;

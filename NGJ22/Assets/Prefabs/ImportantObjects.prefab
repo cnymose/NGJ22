@@ -1437,6 +1437,9 @@ MonoBehaviour:
   taskPaper: {fileID: 4275173193886783500}
   fade: {fileID: 564037160246216689}
   fadeSpeed: 0.6
+  objectsToPlace: 0
+  cakeSpawner: {fileID: 5489704879208994194}
+  cakePrefab: {fileID: 0}
 --- !u!136 &5722120127677281374
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4181,6 +4184,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4005666134701670821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5489704879208994194}
+  m_Layer: 0
+  m_Name: CakeSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5489704879208994194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4005666134701670821}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 426370520728892382}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4037825685013248300
 GameObject:
   m_ObjectHideFlags: 0
@@ -6826,6 +6860,7 @@ Transform:
   - {fileID: 6675476911838235353}
   - {fileID: 9158508885794632688}
   - {fileID: 3932393564490086094}
+  - {fileID: 5489704879208994194}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

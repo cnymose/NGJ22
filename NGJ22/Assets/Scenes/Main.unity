@@ -634,6 +634,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -3.12
       objectReference: {fileID: 0}
+    - target: {fileID: 832558090986980439, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
+      propertyPath: characterID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090269566366853989, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
+      propertyPath: characterID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092051303610779256, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
+      propertyPath: characterID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1092051303610779256, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
       propertyPath: snappedVisuals.Array.data[0]
       value: 
@@ -654,6 +666,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.005
       objectReference: {fileID: 0}
+    - target: {fileID: 1876682285460325919, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
+      propertyPath: characterID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399579877567336139, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
+      propertyPath: characterID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2399579877567336139, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
       propertyPath: snappedVisuals.Array.size
       value: 1
@@ -673,6 +693,14 @@ PrefabInstance:
     - target: {fileID: 3366438237069068324, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
       propertyPath: m_LocalPosition.z
       value: -3.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229178743538159302, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
+      propertyPath: cakePrefab
+      value: 
+      objectReference: {fileID: 4481956696607645911, guid: 59e2c259da6a7954b9bb7d94b8e65bd8, type: 3}
+    - target: {fileID: 4229178743538159302, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
+      propertyPath: objectsToPlace
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4652179585918071531, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -698,6 +726,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2.41
       objectReference: {fileID: 0}
+    - target: {fileID: 5179116743148970588, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
+      propertyPath: characterID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489704879208994194, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.88
+      objectReference: {fileID: 0}
     - target: {fileID: 5783352377972292847, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -721,6 +757,10 @@ PrefabInstance:
     - target: {fileID: 6285966931718666214, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292642219107264919, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
+      propertyPath: characterID
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6292642219107264919, guid: 8ab8007db56a0e642bedf57ea7d3cb0c, type: 3}
       propertyPath: snappedVisuals.Array.data[0]

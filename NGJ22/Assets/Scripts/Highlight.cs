@@ -30,6 +30,7 @@ public class Highlight : MonoBehaviour
         foreach (var targetRenderer in targetRenderers)
         {
             targetRenderer.material.SetFloat(outlinePropertyId, 0);
+            targetRenderer.material.SetColor(outlineColorPropertyId, Color.black);
         }
     }
 }

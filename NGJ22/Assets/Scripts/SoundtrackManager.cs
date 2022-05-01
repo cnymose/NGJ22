@@ -8,15 +8,18 @@ public class SoundtrackManager : MonoBehaviour
     private int ChairItemsCollected = 0;
     private int TotalItemsCollected = 0;
     private FMODUnity.StudioEventEmitter audio;
+    private FMODUnity.StudioEventEmitter interactSound;
     private WhiteNoiseHandler whiteNoise;
 
     private void Start() {
         audio = GetComponent<FMODUnity.StudioEventEmitter>();
         whiteNoise = FindObjectOfType<WhiteNoiseHandler>();
+        interactSound = transform.GetChild(0).GetComponent<FMODUnity.StudioEventEmitter>();
     }
 
     private void Update() {
-        
+        if (Input.anyKeyDown)
+            Interact();
     }
 
     public void AddToTV() {
@@ -38,4 +41,9 @@ public class SoundtrackManager : MonoBehaviour
         audio.EventInstance.setParameterByName("TotalItems", ChairItemsCollected+TVItemsCollected);
         whiteNoise.volume((1 -  (float)TotalItemsCollected/6));
     }
+    public void Interact() {
+        interactSound.Play();
+    }
+
+
 }

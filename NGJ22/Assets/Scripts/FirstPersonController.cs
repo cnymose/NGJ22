@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class FirstPersonController : MonoBehaviour
 {
@@ -32,6 +33,9 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] GameObject cakePrefab;
     [SerializeField] GameObject bobbyNameTag;
     [SerializeField] GameObject eliseNameTag;
+    [SerializeField] Animator bobbyAnimator;
+    [SerializeField] Animator eliseAnimator;
+    bool fadeOut = false;
 
     private Highlight currentHighlight;
     
@@ -49,6 +53,7 @@ public class FirstPersonController : MonoBehaviour
         RayCast();
         HeldItemVelocity();
         FadeIntro();
+        FadeOut();
     }
     
     void BodyMovement()
@@ -139,6 +144,7 @@ public class FirstPersonController : MonoBehaviour
                 soundStuff.GetComponent<SoundtrackManager>().AddToChair();
                 if(bobbyCounter == 4)
                 {
+                    bobbyAnimator.SetBool("dance", true);
                     bobbyNameTag.SetActive(true);
                 }
                 CheckPlacedCounter();
@@ -150,6 +156,7 @@ public class FirstPersonController : MonoBehaviour
                 soundStuff.GetComponent<SoundtrackManager>().AddToTV();
                 if (eliseCounter == 3)
                 {
+                    eliseAnimator.SetBool("dance", true);
                     eliseNameTag.SetActive(true);
                 }
                 CheckPlacedCounter();
@@ -165,16 +172,32 @@ public class FirstPersonController : MonoBehaviour
         {
             soundStuff.GetComponent<SoundtrackManager>().QueBirthdaySong();
             Instantiate(cakePrefab, cakeSpawner.position, Quaternion.identity);
+            StartCoroutine(WaitFade());
             Debug.Log("instantiated");
         }
     }
 
     void FadeIntro()
     {
-        if(fadeValue > 0)
+        if(fadeOut == false && fadeValue > 0)
         {
             fade.GetComponent<Image>().color = new Color32(0, 0, 0, (byte)fadeValue);
             fadeValue -= fadeSpeed;
+        }
+    }
+
+    IEnumerator WaitFade()
+    {
+        yield return new WaitForSeconds(8);
+        fadeOut = true;
+    }
+
+    void FadeOut()
+    {
+        if (fadeOut == true && fadeValue < 255)
+        {
+            fade.GetComponent<Image>().color = new Color32(0, 0, 0, (byte)fadeValue);
+            fadeValue += fadeSpeed/2;
         }
     }
 

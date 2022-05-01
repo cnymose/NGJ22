@@ -24,7 +24,7 @@ public class FirstPersonController : MonoBehaviour
     GameObject heldItem;
     [SerializeField] GameObject taskPaper;
     [SerializeField] GameObject fade;
-    float fadeValue = 255;
+    float fadeValue = 230;
     [SerializeField] float fadeSpeed;
     int placedCounter;
     int bobbyCounter;
@@ -186,7 +186,7 @@ public class FirstPersonController : MonoBehaviour
         if(fadeOut == false && fadeValue > 0)
         {
             fade.GetComponent<Image>().color = new Color32(0, 0, 0, (byte)fadeValue);
-            fadeValue -= fadeSpeed;
+            fadeValue -= fadeSpeed * Time.deltaTime;
         }
     }
 
@@ -201,7 +201,7 @@ public class FirstPersonController : MonoBehaviour
         if (fadeOut == true && fadeValue < 255)
         {
             fade.GetComponent<Image>().color = new Color32(0, 0, 0, (byte)fadeValue);
-            fadeValue += fadeSpeed/2;
+            fadeValue += fadeSpeed/ 2 * Time.deltaTime;
         }
     }
 
